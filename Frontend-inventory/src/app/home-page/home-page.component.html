@@ -1,0 +1,80 @@
+<div class="background-image-wrapper">
+  <div class="overlay"></div>
+
+  <!-- ✅ Fixed Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3 fixed-top">
+    <div class="container-fluid">
+      <span class="navbar-brand fw-bold">DRDO Inventory</span>
+      <a routerLink="/admin-login">
+        <button class="btn btn-outline-light ms-auto">Login</button>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ✅ Dashboard Content -->
+  <div class="content-wrapper text-white">
+    <div class="container my-5 pt-5">
+      <h2 class="text-center mb-5">DRDO Inventory Dashboard</h2>
+
+      <div class="row g-4 justify-content-center">
+        <!-- Box 1 -->
+        <div class="col-12 col-md-6 col-lg-5">
+          <div class="card shadow-sm h-100 text-center p-4 border-0">
+            <div class="card-body">
+              <i class="bi bi-box-seam display-4 mb-3 text-primary"></i>
+              <h5 class="card-title">All Inventory</h5>
+              <p class="card-text">View all inventory items.</p>
+              <a routerLink="/inventory-list" class="btn btn-outline-primary"
+                >View</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Box 2 -->
+        <div class="col-12 col-md-6 col-lg-5">
+          <div class="card shadow-sm h-100 text-center p-4 border-0">
+            <div class="card-body">
+              <i class="bi bi-people-fill display-4 mb-3 text-success"></i>
+              <h5 class="card-title">User-wise Inventory</h5>
+              <p class="card-text">Items assigned to users.</p>
+              <a routerLink="/user-list" class="btn btn-outline-success"
+                >View</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Box 3 -->
+        <div class="col-12 col-md-6 col-lg-5">
+          <div class="card shadow-sm h-100 text-center p-4 border-0">
+            <div class="card-body">
+              <i class="bi bi-funnel-fill display-4 mb-3 text-warning"></i>
+              <h5 class="card-title">Consumable / Non-Consumable</h5>
+              <p class="card-text">Filter items by type.</p>
+              <a routerLink="/consumable-items" class="btn btn-outline-warning"
+                >View</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Box 4 -->
+        <div class="col-12 col-md-6 col-lg-5">
+          <div class="card shadow-sm h-100 text-center p-4 border-0">
+            <div class="card-body">
+              <i
+                class="bi bi-exclamation-triangle-fill display-4 mb-3 text-danger"
+              ></i>
+              <h5 class="card-title">Condemned Items</h5>
+              <p class="card-text">Track condemned inventory.</p>
+              <a routerLink="/condemned-items" class="btn btn-outline-danger"
+                >View</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

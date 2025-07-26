@@ -1,0 +1,98 @@
+<!-- NAVBAR (Fixed) -->
+<nav
+  class="navbar navbar-expand-lg navbar-dark shadow-sm fixed-top"
+  style="background-color: #007bff"
+>
+  <div class="container-fluid">
+    <a class="navbar-brand text-white fw-semibold fs-5" routerLink="/">
+      🔐 DRDO Admin Login
+    </a>
+    <div class="ms-auto">
+      <a routerLink="/" class="btn btn-outline-light btn-sm rounded">
+        🏠 Back to Home
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- Background Watermark -->
+<div
+  class="position-fixed top-0 start-0 w-100 h-100"
+  style="
+    z-index: 0;
+    background-image: url('assets/drdo-logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 600px;
+    opacity: 0.05;
+    filter: blur(2px);
+    pointer-events: none;
+  "
+></div>
+
+<!-- Page Content -->
+<div
+  class="container-fluid"
+  style="margin-top: 80px; z-index: 1; position: relative"
+>
+  <div class="row min-vh-100 align-items-center">
+    <!-- Left: Mission -->
+    <div
+      class="col-md-6 d-none d-md-flex justify-content-center align-items-center px-5"
+    >
+      <div class="border-start border-4 border-primary ps-4">
+        <h3 class="text-primary mb-3">
+          <i class="bi bi-shield-lock"></i> DRDO's Mission
+        </h3>
+        <p class="text-muted" style="font-size: 1.1rem">
+          The Defence Research and Development Organisation (DRDO) strives to
+          empower India’s defence capabilities by developing cutting-edge
+          technologies, ensuring self-reliance, and fostering innovation in
+          scientific research for national security.
+        </p>
+      </div>
+    </div>
+
+    <!-- Right: Login Form -->
+    <div class="col-md-6 d-flex justify-content-center align-items-center">
+      <div class="position-relative w-100" style="max-width: 400px">
+        <div
+          class="card p-4 shadow-lg rounded-4 bg-white animate__animated animate__fadeInRight"
+        >
+          <h4 class="text-center mb-4 text-dark">Admin Login</h4>
+          <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input
+                type="text"
+                id="username"
+                class="form-control"
+                [(ngModel)]="username"
+                name="username"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                id="password"
+                class="form-control"
+                [(ngModel)]="password"
+                name="password"
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              class="btn btn-primary w-100"
+              [disabled]="!loginForm.form.valid"
+            >
+              Login
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

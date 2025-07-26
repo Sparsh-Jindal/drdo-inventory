@@ -1,0 +1,150 @@
+<!-- Fixed Navbar -->
+<nav
+  class="navbar navbar-expand-lg fixed-top shadow-sm"
+  style="
+    background: linear-gradient(to right, #1a237e, #283593);
+    backdrop-filter: blur(6px);
+  "
+>
+  <div class="container-fluid">
+    <span class="navbar-brand text-white fw-semibold fs-5"
+      >👥 Manage DRDO Users</span
+    >
+    <div class="ms-auto">
+      <a
+        routerLink="/admin-panel"
+        class="btn btn-outline-light btn-sm rounded-pill fw-medium"
+      >
+        ← Back to Admin Panel
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- Spacer -->
+<div style="height: 70px"></div>
+
+<!-- Page Wrapper -->
+<div
+  class="d-flex align-items-center justify-content-center flex-column position-relative px-3"
+  style="
+    background: linear-gradient(135deg, #e8eaf6, #c5cae9);
+    min-height: calc(100vh - 80px);
+  "
+>
+  <!-- Watermarks -->
+  <div
+    class="position-absolute top-50 start-0 translate-middle-y z-0 opacity-25"
+    style="left: 80px"
+  >
+    <img
+      src="assets/drdo-logo.png"
+      alt="DRDO Left"
+      style="width: 150px; filter: blur(2px)"
+    />
+  </div>
+  <div
+    class="position-absolute top-50 end-0 translate-middle-y z-0 opacity-25"
+    style="right: 80px"
+  >
+    <img
+      src="assets/drdo-logo.png"
+      alt="DRDO Right"
+      style="width: 150px; filter: blur(2px)"
+    />
+  </div>
+  <div
+    class="position-absolute top-50 start-50 translate-middle opacity-25 z-0"
+  >
+    <img
+      src="assets/drdo-logo.png"
+      alt="DRDO Watermark"
+      style="width: 280px; filter: blur(2px)"
+    />
+  </div>
+
+  <!-- Card -->
+  <div
+    class="card border-0 shadow-lg rounded-4 z-1 animate__animated animate__fadeIn"
+    style="
+      width: 100%;
+      max-width: 1100px;
+      background-color: #ffffffee;
+      backdrop-filter: blur(6px);
+    "
+  >
+    <div class="card-body px-4 py-4">
+      <!-- Title + Add Button -->
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5 class="fw-bold text-primary mb-0">User Directory</h5>
+        <a routerLink="/user-form">
+          <button class="btn btn-drdo btn-sm rounded-pill">➕ Add User</button>
+        </a>
+      </div>
+
+      <!-- User Table -->
+      <div class="table-responsive">
+        <table
+          class="table table-bordered table-hover align-middle text-center shadow-sm table-striped"
+        >
+          <thead class="table-primary">
+            <tr>
+              <th>#</th>
+              <th>User Name</th>
+              <th>Designation</th>
+              <th colspan="2">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of userList; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ user.userName }}</td>
+              <td>{{ user.designation }}</td>
+              <td>
+                <a [routerLink]="['/update-user', user.id]"
+                  ><button class="btn btn-sm btn-drdo rounded-pill">
+                    ✏️ Update
+                  </button></a
+                >
+              </td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Styles -->
+<style>
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+  }
+
+  .btn-drdo {
+    background: linear-gradient(to right, #3f51b5, #1a237e);
+    border: none;
+    color: white;
+    transition: all 0.3s ease;
+  }
+
+  .btn-drdo:hover {
+    background: linear-gradient(to right, #3949ab, #0d1b67);
+    box-shadow: 0 0 10px rgba(63, 81, 181, 0.5);
+  }
+
+  .card:hover {
+    box-shadow: 0 0 25px rgba(33, 50, 140, 0.3);
+  }
+</style>
+
+<!-- Animate CSS -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>

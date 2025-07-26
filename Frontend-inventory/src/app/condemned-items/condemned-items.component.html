@@ -1,0 +1,48 @@
+<!-- ✅ DRDO Watermark Background -->
+<div class="drdo-watermark"></div>
+
+<!-- ✅ Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top custom-navbar">
+  <div class="container-fluid px-4">
+    <a class="navbar-brand fw-bold text-white" href="#">
+      Condemned Inventory
+    </a>
+    <div class="ms-auto d-flex gap-2 align-items-center">
+      <!-- ⬇ Download Button First -->
+      <button class="btn btn-danger btn-sm" (click)="downloadPDF()">
+        ⬇ Download PDF
+      </button>
+
+      <!-- ⬅ Back Button After -->
+      <a routerLink="/" class="btn btn-outline-light btn-sm rounded">
+        ⬅ Back to Home
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ✅ Page Content -->
+<div class="container mt-5 pt-4">
+  <h4 class="text-center text-danger mb-3">📦 Condemned Inventory Items</h4>
+
+  <table class="table table-bordered table-striped condemned-table">
+    <thead class="table-dark">
+      <tr>
+        <th>#</th>
+        <th>Item</th>
+        <th>L/F No</th>
+        <th>CRV No</th>
+        <th>Condemned Qty</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of condemnedItems; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ item.itemName }}</td>
+        <td>{{ item.lfNo }}</td>
+        <td>{{ item.crvNo }}</td>
+        <td>{{ item.condemnedQty }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

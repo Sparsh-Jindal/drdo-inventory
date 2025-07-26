@@ -1,0 +1,45 @@
+.watermark-container {
+  position: relative;
+  min-height: 100vh;
+  background-color: #fdfaf3;
+  padding-top: 80px;
+  overflow: hidden;
+}
+
+.watermark-container::before,
+.watermark-container::after,
+.watermark-container .center-watermark {
+  content: "";
+  position: absolute;
+  background-image: url('/assets/drdo-logo.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.05;
+  z-index: 0;
+  filter: blur(1px);
+}
+
+.watermark-container::before {
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 180px;
+  height: 180px;
+}
+
+.watermark-container::after {
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 180px;
+  height: 180px;
+}
+
+.watermark-container .center-watermark {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+  height: 250px;
+  position: absolute;
+}

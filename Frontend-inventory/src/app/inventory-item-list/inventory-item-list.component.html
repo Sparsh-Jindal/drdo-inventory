@@ -1,0 +1,99 @@
+<!-- ✅ Navbar -->
+<nav
+  class="navbar navbar-expand-lg px-3 mb-3"
+  style="background-color: #8b4513"
+>
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h5 text-white">🧾 Inventory Module</span>
+
+    <div class="ms-auto d-flex gap-2">
+      <button
+        class="btn btn-sm btn-outline-light rounded-pill"
+        (click)="downloadPDF()"
+      >
+        📥 Download as PDF
+      </button>
+      <a routerLink="/" class="btn btn-sm btn-outline-light rounded-pill">
+        ← Back to Homepage
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ✅ Watermark Container -->
+<div class="position-relative watermark-container">
+  <!-- Watermark Image -->
+  <div
+    class="drdo-watermark position-absolute top-50 start-50 translate-middle"
+  >
+    <img src="assets/drdo-logo.png" alt="DRDO Logo" />
+  </div>
+
+  <!-- ✅ Inventory Section -->
+  <div class="container my-4 position-relative" style="z-index: 2">
+    <h4 class="text-center mb-4 fw-semibold" style="color: #4b2e18">
+      📦 Complete Inventory List
+    </h4>
+
+    <div class="card rounded-4 border" style="border-color: #5a3a1b">
+      <div class="card-body table-responsive p-0">
+        <table
+          class="table align-middle text-center mb-0 inventory-table"
+          style="border-collapse: collapse"
+        >
+          <thead style="background-color: #cd853f">
+            <tr class="text-white">
+              <th style="border: 2px solid #4e2c15">S.No</th>
+              <th style="border: 2px solid #4e2c15">Item</th>
+              <th style="border: 2px solid #4e2c15">L/F No</th>
+              <th style="border: 2px solid #4e2c15">CRV No</th>
+              <th style="border: 2px solid #4e2c15">Qty</th>
+              <th style="border: 2px solid #4e2c15">Amount</th>
+              <th style="border: 2px solid #4e2c15">Consumable</th>
+              <th style="border: 2px solid #4e2c15">Username</th>
+              <th style="border: 2px solid #4e2c15">Project</th>
+              <th style="border: 2px solid #4e2c15">Location</th>
+              <th style="border: 2px solid #4e2c15">Condemned Qty</th>
+            </tr>
+          </thead>
+
+          <!-- ✅ Data Rows -->
+          <tbody *ngIf="items.length > 0">
+            <tr *ngFor="let item of items; let i = index">
+              <td style="border: 1.5px solid #5e3b1e">{{ i + 1 }}</td>
+              <td style="border: 1.5px solid #5e3b1e">{{ item.itemName }}</td>
+              <td style="border: 1.5px solid #5e3b1e">{{ item.lfNo }}</td>
+              <td style="border: 1.5px solid #5e3b1e">{{ item.crvNo }}</td>
+              <td style="border: 1.5px solid #5e3b1e">{{ item.quantity }}</td>
+              <td style="border: 1.5px solid #5e3b1e">₹{{ item.amount }}</td>
+              <td style="border: 1.5px solid #5e3b1e">
+                {{ item.consumable ? "Consumable" : "Non-Consumable" }}
+              </td>
+              <td style="border: 1.5px solid #5e3b1e">
+                {{ item.user.userName }}
+              </td>
+              <td style="border: 1.5px solid #5e3b1e">
+                {{ item.project.projectName }}
+              </td>
+              <td style="border: 1.5px solid #5e3b1e">
+                {{ item.location.locationName }}
+              </td>
+              <td style="border: 1.5px solid #5e3b1e">
+                {{ item.condemnedQty }}
+              </td>
+            </tr>
+          </tbody>
+
+          <!-- ✅ No Data Message -->
+          <tbody *ngIf="items.length === 0">
+            <tr>
+              <td colspan="11" class="text-center text-danger fw-semibold py-3">
+                🚫 No items to display.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

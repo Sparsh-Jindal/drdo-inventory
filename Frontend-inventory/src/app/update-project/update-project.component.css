@@ -1,0 +1,13 @@
+.text-purple {
+  color: #7b4f9e;
+}
+
+.border-purple {
+  border: 1px solid #9270c3 !important;
+  box-shadow: none;
+}
+
+.border-purple:focus {
+  border-color: #7b4f9e !important;
+  box-shadow: 0 0 0 0.2rem rgba(123, 79, 158, 0.25);
+}

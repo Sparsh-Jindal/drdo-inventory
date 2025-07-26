@@ -1,0 +1,53 @@
+/* Card container - clean, official */
+.card {
+  background-color: #ffffff;
+  border: 1px solid #c9c9c9;
+  border-radius: 6px;
+  box-shadow: none;
+}
+
+/* Reset Bootstrap's table spacing influence */
+.custom-table {
+  width: 100%;
+  border-collapse: collapse; /* ensures tight, single borders */
+  font-size: 15px;
+  color: #212529;
+  margin-bottom: 0;
+}
+
+/* Header */
+.custom-table thead th {
+  background-color: #1c1c1c; /* DRDO dark header */
+  color: #ffffff;
+  font-weight: 600;
+  border: 1px solid #8d8d8d; /* thin header border */
+  padding: 8px 10px;
+  white-space: nowrap;
+}
+
+/* Body cells */
+.custom-table tbody td {
+  border: 1px solid #d0d0d0; /* light thin border */
+  padding: 8px 10px;
+}
+
+/* Hover row */
+.custom-table tbody tr:hover {
+  background-color: #f2f6ff; /* very light blue/grey */
+  transition: background-color 0.15s ease-in-out;
+}
+.watermark-container {
+  position: relative;
+  min-height: 500px;
+  background-color: #fcf5eb;
+  overflow: hidden;
+}
+
+.drdo-watermark img {
+  width: 350px;
+  opacity: 0.06;
+  filter: blur(1px);
+  pointer-events: none;
+  user-select: none;
+}
+

@@ -1,0 +1,155 @@
+<!-- NAVBAR -->
+<nav
+  class="navbar navbar-expand-lg fixed-top shadow-sm"
+  style="
+    background: linear-gradient(to right, #9270c3, #7b4f9e);
+    backdrop-filter: blur(6px);
+  "
+>
+  <div class="container-fluid">
+    <span class="navbar-brand text-white fw-semibold fs-5">
+      📁 Manage DRDO Projects
+    </span>
+    <div class="ms-auto">
+      <a
+        routerLink="/admin-panel"
+        class="btn btn-outline-light btn-sm rounded-pill fw-medium"
+      >
+        ← Back to Admin Panel
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- Spacer -->
+<div style="height: 70px"></div>
+
+<!-- PAGE BACKGROUND -->
+<div
+  class="d-flex align-items-center justify-content-center flex-column position-relative px-3"
+  style="
+    background: linear-gradient(to right, #f7f1fb, #f0e5fa);
+    min-height: calc(100vh - 80px);
+  "
+>
+  <!-- Left Watermark -->
+  <img
+    src="assets/drdo-logo.png"
+    alt="DRDO Left"
+    class="position-absolute side-watermark"
+    style="left: 40px"
+  />
+
+  <!-- Right Watermark -->
+  <img
+    src="assets/drdo-logo.png"
+    alt="DRDO Right"
+    class="position-absolute side-watermark"
+    style="right: 40px"
+  />
+
+  <!-- Center Watermark -->
+  <img
+    src="assets/drdo-logo.png"
+    alt="DRDO Center"
+    class="position-absolute center-watermark"
+  />
+
+  <!-- CARD -->
+  <div
+    class="card border-0 shadow-lg rounded-4 z-1 animate__animated animate__fadeIn animate__delay-0_5s"
+    style="
+      width: 100%;
+      max-width: 1100px;
+      background-color: #ffffffee;
+      backdrop-filter: blur(6px);
+    "
+  >
+    <div class="card-body px-4 py-4">
+      <!-- Title + Add -->
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5 class="fw-bold text-dark mb-0">Project Directory</h5>
+        <a routerLink="/project-form">
+          <button class="btn btn-purple btn-sm rounded-pill px-3">
+            ➕ Add Project
+          </button>
+        </a>
+      </div>
+
+      <!-- Project Table -->
+      <div class="table-responsive">
+        <table
+          class="table table-bordered table-hover align-middle text-center shadow-sm"
+        >
+          <thead class="table-light">
+            <tr>
+              <th>#</th>
+              <th>Project Name</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let project of projectList; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td>{{ project.projectName }}</td>
+              <td>
+                <a [routerLink]="['/update-project', project.id]">
+                  <button class="btn btn-sm btn-purple rounded-pill me-2">
+                    ✏️ Update
+                  </button>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STYLES -->
+<style>
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+  }
+
+  .btn-purple {
+    background: linear-gradient(to right, #9270c3, #7b4f9e);
+    border: none;
+    color: white;
+    transition: all 0.3s ease;
+  }
+
+  .btn-purple:hover {
+    background: linear-gradient(to right, #7b4f9e, #5f3b80);
+    color: white;
+    box-shadow: 0 0 10px rgba(123, 79, 158, 0.4);
+  }
+
+  .side-watermark {
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.08;
+    width: 150px;
+    z-index: 0;
+  }
+
+  .center-watermark {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.05;
+    width: 200px;
+    z-index: 0;
+  }
+</style>
+
+<!-- Animate.css CDN -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>

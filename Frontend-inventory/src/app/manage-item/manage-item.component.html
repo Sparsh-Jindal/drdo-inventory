@@ -1,0 +1,119 @@
+<nav
+  class="navbar navbar-expand-lg navbar-dark fixed-top"
+  style="background-color: #5b3a29; border-bottom: 1px solid #422a1f"
+>
+  <div class="container-fluid px-4">
+    <a class="navbar-brand fw-bold text-white" href="#">
+      <img
+        src="assets/drdo-logo.png"
+        alt="DRDO"
+        style="height: 40px; margin-right: 10px"
+      />
+      DRDO Inventory System
+    </a>
+    <div class="d-flex">
+      <button
+        class="btn btn-outline-light rounded-pill fw-semibold"
+        routerLink="/admin-panel"
+      >
+        ⬅️ Back to Admin Panel
+      </button>
+    </div>
+  </div>
+</nav>
+<!-- MAIN SECTION -->
+<div class="container-fluid px-0 watermark-container">
+  <div class="container py-4 position-relative" style="z-index: 1">
+    <!-- Add Items Button -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h5 class="fw-bold mb-0" style="color: #5b3a29">
+        📦 Inventory Directory
+      </h5>
+      <button
+        class="btn rounded-pill btn-sm text-white"
+        style="background-color: #5b3a29"
+        routerLink="/inventory-form"
+      >
+        ➕ Add Items
+      </button>
+    </div>
+
+    <!-- Inventory Table -->
+    <div
+      class="table-responsive rounded"
+      style="border: 1px solid #c9b8a0; background-color: #fffaf3"
+    >
+      <table
+        class="table table-bordered table-hover table-striped align-middle mb-0"
+      >
+        <thead
+          style="background-color: #d4c2ac; color: #3d2a1e"
+          class="text-center"
+        >
+          <tr>
+            <th>#</th>
+            <th>Item Name</th>
+            <th>L/F No</th>
+            <th>CRV No</th>
+            <th>Quantity</th>
+            <th>Amount (₹)</th>
+            <th>Type</th>
+            <th>Username</th>
+            <th>Project</th>
+            <th>Location</th>
+            <th>Condemned Qty</th>
+            <th colspan="2">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="text-center">
+          <tr *ngFor="let item of inventoryItems; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ item.itemName }}</td>
+            <td>{{ item.lfNo }}</td>
+            <td>{{ item.crvNo }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.amount }}</td>
+            <td>
+              <span
+                class="badge"
+                [ngClass]="{
+                  'bg-brown text-white': item.consumable,
+                  'bg-dark text-white': !item.consumable
+                }"
+                style="background-color: #5b3a29"
+              >
+                {{ item.consumable ? "Consumable" : "Non-Consumable" }}
+              </span>
+            </td>
+            <td>{{ item.user.userName }}</td>
+            <td>{{ item.project.projectName }}</td>
+            <td>{{ item.location.locationName }}</td>
+            <td>{{ item.condemnedQty }}</td>
+            <td>
+              <a [routerLink]="['/update-item', item.id]"
+                ><button
+                  class="btn btn-sm px-2 py-1 text-white"
+                  style="background-color: #5b3a29; font-size: 0.75rem"
+                >
+                  ✏️ Update
+                </button></a
+              >
+            </td>
+            <td>
+              <button
+                class="btn btn-sm px-2 py-1 text-white"
+                style="background-color: #dc3545; font-size: 0.75rem"
+                (click)="deleteItem(item.id!)"
+              >
+                🗑️ Delete
+              </button>
+            </td>
+          </tr>
+          <tr *ngIf="inventoryItems.length === 0">
+            <td colspan="13" class="text-muted">No inventory items found.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

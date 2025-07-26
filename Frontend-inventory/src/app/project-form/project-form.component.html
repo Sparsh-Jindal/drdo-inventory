@@ -1,0 +1,163 @@
+<!-- STYLES -->
+<style>
+  .side-watermark {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.08;
+    width: 150px;
+    z-index: 0;
+  }
+
+  .center-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.05;
+    width: 200px;
+    z-index: 0;
+  }
+
+  .left-watermark {
+    left: 40px;
+  }
+
+  .right-watermark {
+    right: 40px;
+  }
+
+  .background-wrapper {
+    position: relative;
+    background: linear-gradient(to right, #f7f1fb, #f0e5fa);
+    min-height: 100vh;
+    overflow: hidden;
+  }
+
+  .btn-purple {
+    background: linear-gradient(to right, #9270c3, #7b4f9e);
+    border: none;
+    color: white;
+  }
+
+  .btn-purple:hover {
+    background: linear-gradient(to right, #7b4f9e, #5f3b80);
+    color: white;
+  }
+
+  /* Animation */
+  @keyframes slideFadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .form-animate {
+    animation: slideFadeIn 2s ease;
+  }
+</style>
+
+<!-- NAVBAR -->
+<nav
+  class="navbar navbar-expand-lg fixed-top shadow-sm"
+  style="
+    background: linear-gradient(to right, #9270c3, #7b4f9e);
+    backdrop-filter: blur(6px);
+  "
+>
+  <div class="container-fluid">
+    <span class="navbar-brand text-light fw-semibold fs-5">
+      🧱 Add DRDO Project
+    </span>
+    <div class="ms-auto">
+      <a
+        routerLink="/manage-project"
+        class="btn btn-outline-light btn-sm rounded-pill fw-medium"
+        >← Back to Manage Project</a
+      >
+    </div>
+  </div>
+</nav>
+
+<!-- BACKGROUND -->
+<div
+  class="background-wrapper d-flex justify-content-center align-items-center pt-5"
+>
+  <!-- Left Watermark -->
+  <img
+    src="assets/drdo-logo.png"
+    alt="Left Logo"
+    class="side-watermark left-watermark"
+  />
+
+  <!-- Right Watermark -->
+  <img
+    src="assets/drdo-logo.png"
+    alt="Right Logo"
+    class="side-watermark right-watermark"
+  />
+
+  <!-- Center Watermark -->
+  <img src="assets/drdo-logo.png" alt="Center Logo" class="center-watermark" />
+
+  <!-- FORM CARD -->
+  <div
+    class="card shadow-lg border-0 rounded-4 p-4 form-animate"
+    style="
+      width: 100%;
+      max-width: 600px;
+      background: #ffffffda;
+      backdrop-filter: blur(5px);
+      z-index: 1;
+    "
+  >
+    <div class="card-body position-relative">
+      <div class="text-center mb-4">
+        <h3 class="fw-bold text-dark">
+          <i class="bi bi-folder-plus me-2"></i>Add New Project
+        </h3>
+        <p class="text-muted small mb-0">
+          Enter the project name to create a new project entry
+        </p>
+      </div>
+
+      <form
+        (ngSubmit)="onSubmit()"
+        #projectForm="ngForm"
+        class="needs-validation"
+      >
+        <!-- Project Name -->
+        <div class="form-floating mb-4">
+          <input
+            type="text"
+            id="projectName"
+            name="projectName"
+            class="form-control rounded-pill ps-4 shadow-sm"
+            required
+            [(ngModel)]="project.projectName"
+            placeholder="Project Name"
+          />
+          <label for="projectName" class="ms-3 text-muted"
+            >🏗️ Project Name</label
+          >
+        </div>
+
+        <!-- Submit -->
+        <div class="d-grid">
+          <button
+            type="submit"
+            class="btn btn-purple rounded-pill py-2 shadow-sm fw-semibold"
+            [disabled]="!projectForm.form.valid"
+          >
+            ➕ Add Project
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

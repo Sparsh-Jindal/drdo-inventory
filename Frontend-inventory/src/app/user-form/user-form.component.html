@@ -1,0 +1,174 @@
+<!-- Fixed Navbar -->
+<nav
+  class="navbar navbar-expand-lg fixed-top shadow-sm"
+  style="
+    background: linear-gradient(to right, #1a237e, #283593);
+    backdrop-filter: blur(6px);
+  "
+>
+  <div class="container-fluid">
+    <span class="navbar-brand text-white fw-semibold fs-5">
+      👤 Add DRDO User
+    </span>
+    <div class="ms-auto">
+      <a
+        routerLink="/manage-user"
+        class="btn btn-outline-light btn-sm rounded-pill fw-medium"
+      >
+        ← Back to User Panel
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- Spacer -->
+<div style="height: 70px"></div>
+
+<!-- Page Wrapper -->
+<div
+  class="d-flex align-items-center justify-content-center position-relative"
+  style="
+    background: linear-gradient(135deg, #e8eaf6, #c5cae9);
+    min-height: calc(100vh - 80px);
+  "
+>
+  <!-- Left Watermark -->
+  <div
+    class="position-absolute top-50 start-0 translate-middle-y z-0 opacity-25"
+    style="left: 80px"
+  >
+    <img
+      src="assets/drdo-logo.png"
+      alt="DRDO Left"
+      style="width: 150px; filter: blur(2px)"
+    />
+  </div>
+
+  <!-- Right Watermark -->
+  <div
+    class="position-absolute top-50 end-0 translate-middle-y z-0 opacity-25"
+    style="right: 80px"
+  >
+    <img
+      src="assets/drdo-logo.png"
+      alt="DRDO Right"
+      style="width: 150px; filter: blur(2px)"
+    />
+  </div>
+
+  <!-- Center Watermark -->
+  <div
+    class="position-absolute top-50 start-50 translate-middle opacity-25 z-0"
+  >
+    <img
+      src="assets/drdo-logo.png"
+      alt="DRDO Watermark"
+      style="width: 280px; filter: blur(2px)"
+    />
+  </div>
+
+  <!-- Success Message -->
+  <div
+    *ngIf="successMessage"
+    class="alert alert-success text-center z-1 px-4 py-2 fw-semibold rounded-pill shadow"
+    style="max-width: 420px; font-size: 16px"
+  >
+    ✅ {{ successMessage }}
+  </div>
+
+  <!-- Main Form Card -->
+  <div
+    class="card border-0 shadow-lg rounded-4 animate__animated animate__fadeIn z-1"
+    style="
+      width: 100%;
+      max-width: 500px;
+      background-color: #ffffffee;
+      backdrop-filter: blur(6px);
+    "
+  >
+    <div class="card-body px-4 py-5">
+      <h5 class="text-center text-primary fw-bold mb-4">Enter User Details</h5>
+
+      <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+        <!-- User Name -->
+        <div class="mb-3">
+          <label for="userName" class="form-label text-dark fw-semibold"
+            >User Name</label
+          >
+          <input
+            type="text"
+            id="userName"
+            name="userName"
+            class="form-control border border-primary shadow-sm"
+            required
+            [(ngModel)]="user.userName"
+          />
+        </div>
+
+        <!-- Designation -->
+        <div class="mb-4">
+          <label for="designation" class="form-label text-dark fw-semibold"
+            >Designation</label
+          >
+          <input
+            type="text"
+            id="designation"
+            name="designation"
+            class="form-control border border-primary shadow-sm"
+            required
+            [(ngModel)]="user.designation"
+          />
+        </div>
+
+        <!-- Submit -->
+        <div class="d-grid">
+          <button
+            type="submit"
+            class="btn text-white"
+            [disabled]="!userForm.form.valid"
+            [ngClass]="userForm.form.valid ? 'btn-drdo' : 'btn-secondary'"
+          >
+            ➕ Add User
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Custom Styling -->
+<style>
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+  }
+
+  .btn-drdo {
+    background: linear-gradient(to right, #3f51b5, #1a237e);
+    border: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-drdo:hover {
+    background: linear-gradient(to right, #3949ab, #0d1b67);
+    box-shadow: 0 0 12px rgba(63, 81, 181, 0.5);
+  }
+
+  input:focus {
+    border-color: #1a237e !important;
+    box-shadow: 0 0 6px #3f51b5;
+  }
+
+  .card:hover {
+    box-shadow: 0 0 25px rgba(33, 50, 140, 0.3);
+  }
+</style>
+
+<!-- Animate CSS -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>

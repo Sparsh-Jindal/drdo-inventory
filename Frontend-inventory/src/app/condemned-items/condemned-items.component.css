@@ -1,0 +1,30 @@
+/* ✅ Navbar style */
+.custom-navbar {
+  background-color: #343a40;
+  border-bottom: 1px solid #1f1f1f;
+}
+
+/* ✅ DRDO Watermark */
+.drdo-watermark {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: url('/assets/drdo-logo.png') center center no-repeat;
+  background-size: 300px;
+  opacity: 0.06;
+  z-index: -1;
+  filter: blur(1px);
+}
+
+/* ✅ Transition setup on each cell for smoother row effect */
+.condemned-table tbody td {
+  transition: background-color .1s ease;
+}
+
+/* ✅ Hover effect with dark red */
+.condemned-table tbody tr:hover td {
+  background-color: #c62828 !important;  /* Dark red */
+  color: white;
+}

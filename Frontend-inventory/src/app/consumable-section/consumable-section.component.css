@@ -1,0 +1,61 @@
+.watermark-overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.04;
+  z-index: 0;
+}
+
+.watermark-logo {
+  width: 300px;
+}
+
+.watermark-left,
+.watermark-right {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.03;
+  z-index: 0;
+}
+
+.watermark-left {
+  left: 2%;
+}
+
+.watermark-right {
+  right: 2%;
+}
+
+.watermark-side-logo {
+  width: 200px;
+}
+
+/* Card border style only */
+.card-border {
+  border: 2px solid #ccc;
+  border-radius: 1rem;
+  background-color: transparent !important;
+  width: 300px;
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect */
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

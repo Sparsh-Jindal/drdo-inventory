@@ -1,0 +1,17 @@
+.watermark-container {
+  position: relative;
+  background-color: #f8f9fa;
+  overflow: hidden;
+  min-height: 500px;
+}
+
+.drdo-watermark img {
+  width: 300px;
+  opacity: 0.06;
+  filter: blur(1px);
+  pointer-events: none;
+  user-select: none;
+}
+.card {
+  transition: all 0.9s ease-in-out;
+}

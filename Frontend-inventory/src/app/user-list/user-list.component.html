@@ -1,0 +1,115 @@
+<!-- NAVBAR -->
+<nav class="navbar px-3 mb-3" style="background-color: #0d6efd">
+  <span class="navbar-brand mb-0 h5 text-white">👤 User Module</span>
+  <a routerLink="/" class="btn btn-sm btn-outline-light rounded-pill">
+    ← Back to Homepage
+  </a>
+</nav>
+
+<!-- WATERMARK + TABLE -->
+<div class="watermark-container position-relative">
+  <!-- Watermark Image -->
+  <div
+    class="drdo-watermark position-absolute top-50 start-50 translate-middle"
+  >
+    <img src="assets/drdo-logo.png" alt="DRDO Logo" />
+  </div>
+
+  <!-- Content -->
+  <div class="container mt-4 position-relative" style="z-index: 2">
+    <h4 class="text-center text-primary mb-4 fw-semibold">
+      📋 DRDO User Directory
+    </h4>
+
+    <!-- Responsive Row for User and Inventory Tables -->
+    <div class="row g-4">
+      <!-- User Table -->
+      <div
+        [ngClass]="{
+          'col-md-4': selectedUserId !== null,
+          'col-md-12': selectedUserId === null
+        }"
+      >
+        <div class="card rounded-4 border border-dark bg-light">
+          <div class="card-body table-responsive">
+            <table class="table table-bordered align-middle text-center">
+              <thead style="background-color: #0b5ed7; color: white">
+                <tr>
+                  <th>#ID</th>
+                  <th>User Name</th>
+                  <th>Designation</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let u of users">
+                  <td>{{ u.id }}</td>
+                  <td class="fw-semibold">{{ u.userName }}</td>
+                  <td>{{ u.designation }}</td>
+                  <td>
+                    <button
+                      class="btn btn-sm btn-outline-primary rounded-pill"
+                      (click)="showItems(u.id!)"
+                    >
+                      📦 View Inventory
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Inventory Table or Message -->
+      <div *ngIf="selectedUserId !== null" class="col-md-8">
+        <div class="card border border-dark rounded-4">
+          <div class="card-header bg-primary text-white fw-semibold">
+            📦 Items assigned to User ID {{ selectedUserId }}
+          </div>
+
+          <div class="card-body table-responsive">
+            <!-- If items exist -->
+            <table
+              *ngIf="userItems.length > 0"
+              class="table table-bordered align-middle text-center"
+            >
+              <thead class="table-secondary">
+                <tr>
+                  <th>S.No</th>
+                  <th>Item</th>
+                  <th>LF No</th>
+                  <th>CRV No</th>
+                  <th>Qty</th>
+                  <th>Amount</th>
+                  <th>Project</th>
+                  <th>Location</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of userItems; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ item.itemName }}</td>
+                  <td>{{ item.lfNo }}</td>
+                  <td>{{ item.crvNo }}</td>
+                  <td>{{ item.quantity }}</td>
+                  <td>{{ item.amount }}</td>
+                  <td>{{ item.project.projectName }}</td>
+                  <td>{{ item.location.locationName }}</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- If no items exist -->
+            <div
+              *ngIf="userItems.length === 0"
+              class="text-center text-danger fw-semibold fs-6 py-3"
+            >
+              🚫 No items assigned to this user.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

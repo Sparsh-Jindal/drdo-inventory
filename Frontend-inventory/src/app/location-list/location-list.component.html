@@ -1,0 +1,29 @@
+<div class="container py-5">
+  <!-- Header -->
+  <div class="text-center mb-4">
+    <h2 class="fw-bold text-primary">📍 Location Directory</h2>
+    <p class="text-muted">
+      List of all registered locations in DRDO Inventory System
+    </p>
+  </div>
+
+  <!-- Card for Table -->
+  <div class="card shadow border-0">
+    <div class="card-body">
+      <table class="table table-hover table-bordered align-middle text-center">
+        <thead class="table-primary">
+          <tr>
+            <th style="width: 10%">S.No</th>
+            <th>Location Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let location of locations; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ location.locationName }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

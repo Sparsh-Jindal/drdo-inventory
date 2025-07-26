@@ -1,0 +1,148 @@
+<!-- NAVBAR -->
+<nav
+  class="navbar navbar-expand-lg fixed-top shadow-sm"
+  style="
+    background: linear-gradient(to right, #81c784, #4db6ac);
+    backdrop-filter: blur(6px);
+  "
+>
+  <div class="container-fluid">
+    <span class="navbar-brand text-white fw-semibold fs-5">
+      📌 Add DRDO Location
+    </span>
+    <div class="ms-auto">
+      <a
+        routerLink="/manage-location"
+        class="btn btn-outline-light btn-sm rounded-pill fw-medium"
+      >
+        ← Back to Manage Location
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- SPACER -->
+<div style="height: 70px"></div>
+
+<!-- BACKGROUND -->
+<div
+  class="d-flex align-items-center justify-content-center flex-column position-relative px-3"
+  style="
+    background: linear-gradient(to right, #ebfdf5, #f2fdfd);
+    min-height: calc(100vh - 80px);
+  "
+>
+  <!-- Left Watermark -->
+  <img
+    src="assets/drdo-logo.png"
+    alt="DRDO Left"
+    class="position-absolute side-watermark"
+    style="left: 40px"
+  />
+
+  <!-- Right Watermark -->
+  <img
+    src="assets/drdo-logo.png"
+    alt="DRDO Right"
+    class="position-absolute side-watermark"
+    style="right: 40px"
+  />
+
+  <!-- Center Watermark -->
+  <img
+    src="assets/drdo-logo.png"
+    alt="DRDO Center"
+    class="position-absolute center-watermark"
+  />
+
+  <!-- FORM CARD -->
+  <div
+    class="card shadow-lg border-0 rounded-4 p-4 animate__animated animate__fadeIn animate__delay-0_5s"
+    style="
+      width: 100%;
+      max-width: 600px;
+      background: #ffffffdd;
+      backdrop-filter: blur(5px);
+      z-index: 1;
+    "
+  >
+    <div class="card-body">
+      <!-- Header -->
+      <div class="text-center mb-4">
+        <h3 class="fw-bold text-success">
+          <i class="bi bi-geo-alt-fill me-2"></i> Add New Location
+        </h3>
+        <p class="text-muted small mb-0">
+          Enter the location details to register in system
+        </p>
+      </div>
+
+      <!-- FORM -->
+      <form
+        (ngSubmit)="onSubmit()"
+        #locationForm="ngForm"
+        class="needs-validation"
+      >
+        <div class="form-floating mb-4">
+          <input
+            type="text"
+            id="locationName"
+            name="locationName"
+            class="form-control rounded-pill ps-4 shadow-sm"
+            required
+            [(ngModel)]="location.locationName"
+            placeholder="Location Name"
+          />
+          <label for="locationName" class="ms-3 text-muted"
+            >📍 Location Name</label
+          >
+        </div>
+
+        <!-- Submit -->
+        <div class="d-grid">
+          <button
+            type="submit"
+            class="btn btn-success bg-gradient rounded-pill py-2 shadow-sm fw-semibold"
+            [disabled]="!locationForm.form.valid"
+          >
+            ➕ Add Location
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- STYLES -->
+<style>
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+  }
+
+  .side-watermark {
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.08;
+    width: 150px;
+    z-index: 0;
+  }
+
+  .center-watermark {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.05;
+    width: 200px;
+    z-index: 0;
+  }
+</style>
+
+<!-- Animate.css -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>

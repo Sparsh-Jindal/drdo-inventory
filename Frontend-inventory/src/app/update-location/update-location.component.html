@@ -1,0 +1,136 @@
+<!-- ✅ Navbar -->
+<nav
+  class="navbar navbar-expand-lg fixed-top shadow-sm"
+  style="
+    background: linear-gradient(to right, #81c784, #4db6ac);
+    backdrop-filter: blur(6px);
+  "
+>
+  <div class="container-fluid">
+    <span class="navbar-brand text-white fw-semibold fs-5"
+      >✏️ Update DRDO Location</span
+    >
+
+    <div class="ms-auto">
+      <a
+        routerLink="/manage-location"
+        class="btn btn-outline-light btn-sm rounded-pill fw-medium"
+      >
+        📍 Back to Manage Locations
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- Spacer -->
+<div style="height: 70px"></div>
+
+<!-- ✅ Page Wrapper -->
+<div
+  class="d-flex align-items-center justify-content-center flex-column position-relative px-3"
+  style="
+    background: linear-gradient(135deg, #ebfdf5, #f2fdfd);
+    min-height: calc(100vh - 80px);
+  "
+>
+  <!-- Watermarks -->
+  <div
+    class="position-absolute top-50 start-0 translate-middle-y z-0 opacity-25"
+    style="left: 80px"
+  >
+    <img
+      src="assets/drdo-logo.png"
+      alt="Left Logo"
+      style="width: 150px; filter: blur(2px)"
+    />
+  </div>
+
+  <div
+    class="position-absolute top-50 end-0 translate-middle-y z-0 opacity-25"
+    style="right: 80px"
+  >
+    <img
+      src="assets/drdo-logo.png"
+      alt="Right Logo"
+      style="width: 150px; filter: blur(2px)"
+    />
+  </div>
+
+  <div
+    class="position-absolute top-50 start-50 translate-middle opacity-25 z-0"
+  >
+    <img
+      src="assets/drdo-logo.png"
+      alt="Center Logo"
+      style="width: 280px; filter: blur(2px)"
+    />
+  </div>
+
+  <!-- ✅ Update Form Card -->
+  <div
+    class="card border-0 shadow-lg rounded-4 z-1 animate__animated animate__fadeIn"
+    style="
+      width: 100%;
+      max-width: 600px;
+      background-color: #ffffffee;
+      backdrop-filter: blur(6px);
+    "
+  >
+    <div class="card-body px-4 py-4">
+      <h5 class="fw-bold text-success mb-4">✏️ Update Location</h5>
+
+      <form (ngSubmit)="onSubmit()" *ngIf="location">
+        <div class="mb-3">
+          <label class="form-label text-dark fw-medium">Location Name</label>
+          <input
+            type="text"
+            class="form-control border-success"
+            [(ngModel)]="location.locationName"
+            name="locationName"
+            required
+          />
+        </div>
+
+        <button type="submit" class="btn btn-drdo-green">
+          💾 Update Location
+        </button>
+        <a routerLink="/manage-location" class="btn btn-secondary ms-2"
+          >← Cancel</a
+        >
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ Styles -->
+<style>
+  .btn-drdo-green {
+    background: linear-gradient(to right, #81c784, #4db6ac);
+    border: none;
+    color: white;
+    transition: all 0.3s ease;
+  }
+
+  .btn-drdo-green:hover {
+    background: linear-gradient(to right, #66bb6a, #26a69a);
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.4);
+  }
+
+  .card:hover {
+    box-shadow: 0 0 25px rgba(102, 187, 106, 0.3);
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+  }
+</style>
+
+<!-- ✅ Animate CSS -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>

@@ -1,0 +1,186 @@
+<!-- NAVBAR -->
+<nav
+  class="navbar navbar-expand-lg fixed-top shadow-sm"
+  style="background-color: #5b3a29; backdrop-filter: blur(6px)"
+>
+  <div class="container-fluid">
+    <span class="navbar-brand text-white fw-semibold fs-5">
+      📌 Add Inventory Item
+    </span>
+    <div class="ms-auto">
+      <a
+        routerLink="/manage-item"
+        class="btn btn-outline-light btn-sm rounded-pill fw-medium"
+        >← Back to manage Item</a
+      >
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE CONTENT -->
+<div class="container-fluid watermark-wrapper" style="padding-top: 80px">
+  <div class="watermark-left"></div>
+  <div class="watermark-right"></div>
+
+  <div
+    class="container p-4 rounded shadow-sm form-box animate-box"
+    style="animation-delay: 0.5s"
+  >
+    <h4 class="text-center fw-bold mb-4" style="color: #5b3a29">
+      ➕ Add Inventory Item
+    </h4>
+
+    <form (ngSubmit)="onSubmit()">
+      <!-- Item Name & Quantity -->
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label class="form-label">Item Name</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="item.itemName"
+            name="itemName"
+            required
+          />
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Quantity</label>
+          <input
+            type="number"
+            class="form-control"
+            [(ngModel)]="item.quantity"
+            name="quantity"
+            required
+            min="1"
+            max="100"
+          />
+        </div>
+      </div>
+
+      <!-- Amount & LF No -->
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label class="form-label">Amount (₹)</label>
+          <input
+            type="number"
+            class="form-control"
+            [(ngModel)]="item.amount"
+            name="amount"
+            required
+            min="1"
+          />
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">L/F No</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="item.lfNo"
+            name="lfNo"
+          />
+        </div>
+      </div>
+
+      <!-- CRV & Condemned Qty -->
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label class="form-label">CRV No</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="item.crvNo"
+            name="crvNo"
+          />
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Condemned Quantity</label>
+          <input
+            type="number"
+            class="form-control"
+            [(ngModel)]="item.condemnedQty"
+            name="condemnedQty"
+            min="0"
+            [class.is-invalid]="isInvalidCondemnedQty()"
+          />
+          <div class="invalid-feedback">
+            Condemned quantity must be less than total quantity.
+          </div>
+        </div>
+      </div>
+
+      <!-- Type & User -->
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label class="form-label">Type</label>
+          <select
+            class="form-select"
+            [(ngModel)]="item.consumable"
+            name="consumable"
+            required
+          >
+            <option [ngValue]="true">Consumable</option>
+            <option [ngValue]="false">Non-Consumable</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">User</label>
+          <select
+            class="form-select"
+            [(ngModel)]="item.user"
+            name="user"
+            required
+          >
+            <option *ngFor="let u of usersI" [ngValue]="u">
+              {{ u.userName }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Project & Location -->
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label class="form-label">Project</label>
+          <select
+            class="form-select"
+            [(ngModel)]="item.project"
+            name="project"
+            required
+          >
+            <option *ngFor="let p of projectsI" [ngValue]="p">
+              {{ p.projectName }}
+            </option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Location</label>
+          <select
+            class="form-select"
+            [(ngModel)]="item.location"
+            name="location"
+            required
+          >
+            <option *ngFor="let l of locationsI" [ngValue]="l">
+              {{ l.locationName }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <div class="d-flex justify-content-between align-items-center">
+        <button
+          type="submit"
+          class="btn text-white rounded-pill px-4"
+          style="background-color: #5b3a29"
+          [disabled]="isInvalidCondemnedQty()"
+        >
+          ✅ Add Item
+        </button>
+        <div class="text-success fw-semibold" *ngIf="successMessage">
+          {{ successMessage }}
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

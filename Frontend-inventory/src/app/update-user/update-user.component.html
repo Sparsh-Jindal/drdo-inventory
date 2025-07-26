@@ -1,0 +1,140 @@
+<!-- ✅ Navbar -->
+<nav
+  class="navbar navbar-expand-lg fixed-top shadow-sm"
+  style="
+    background: linear-gradient(to right, #1a237e, #283593);
+    backdrop-filter: blur(6px);
+  "
+>
+  <div class="container-fluid">
+    <span class="navbar-brand text-white fw-semibold fs-5"
+      >✏️ Update DRDO User</span
+    >
+    <div class="ms-auto">
+      <a
+        routerLink="/manage-user"
+        class="btn btn-outline-light btn-sm rounded-pill fw-medium"
+      >
+        👥 Back to Manage Users
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- Spacer -->
+<div style="height: 70px"></div>
+
+<!-- ✅ Page Wrapper -->
+<div
+  class="d-flex align-items-center justify-content-center flex-column position-relative px-3"
+  style="
+    background: linear-gradient(135deg, #e8eaf6, #c5cae9);
+    min-height: calc(100vh - 80px);
+  "
+>
+  <!-- Watermarks -->
+  <div
+    class="position-absolute top-50 start-0 translate-middle-y z-0 opacity-25"
+    style="left: 80px"
+  >
+    <img
+      src="assets/drdo-logo.png"
+      alt="Left Logo"
+      style="width: 150px; filter: blur(2px)"
+    />
+  </div>
+  <div
+    class="position-absolute top-50 end-0 translate-middle-y z-0 opacity-25"
+    style="right: 80px"
+  >
+    <img
+      src="assets/drdo-logo.png"
+      alt="Right Logo"
+      style="width: 150px; filter: blur(2px)"
+    />
+  </div>
+  <div
+    class="position-absolute top-50 start-50 translate-middle opacity-25 z-0"
+  >
+    <img
+      src="assets/drdo-logo.png"
+      alt="Center Logo"
+      style="width: 280px; filter: blur(2px)"
+    />
+  </div>
+
+  <!-- ✅ Update Form Card -->
+  <div
+    class="card border-0 shadow-lg rounded-4 z-1 animate__animated animate__fadeIn"
+    style="
+      width: 100%;
+      max-width: 600px;
+      background-color: #ffffffee;
+      backdrop-filter: blur(6px);
+    "
+  >
+    <div class="card-body px-4 py-4">
+      <h5 class="fw-bold text-primary mb-4">✏️ Update User</h5>
+
+      <form (ngSubmit)="onSubmit()" *ngIf="user">
+        <div class="mb-3">
+          <label class="form-label fw-medium">User Name</label>
+          <input
+            type="text"
+            class="form-control border-primary"
+            [(ngModel)]="user.userName"
+            name="userName"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-medium">Designation</label>
+          <input
+            type="text"
+            class="form-control border-primary"
+            [(ngModel)]="user.designation"
+            name="designation"
+            required
+          />
+        </div>
+
+        <button type="submit" class="btn btn-drdo">💾 Update User</button>
+        <a routerLink="/manage-user" class="btn btn-secondary ms-2">← Cancel</a>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ Styles -->
+<style>
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+  }
+
+  .btn-drdo {
+    background: linear-gradient(to right, #3f51b5, #1a237e);
+    border: none;
+    color: white;
+    transition: all 0.3s ease;
+  }
+
+  .btn-drdo:hover {
+    background: linear-gradient(to right, #3949ab, #0d1b67);
+    box-shadow: 0 0 10px rgba(63, 81, 181, 0.5);
+  }
+
+  .card:hover {
+    box-shadow: 0 0 25px rgba(33, 50, 140, 0.3);
+  }
+</style>
+
+<!-- ✅ Animate CSS -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>

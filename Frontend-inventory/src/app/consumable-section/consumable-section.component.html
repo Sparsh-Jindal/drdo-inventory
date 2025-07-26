@@ -1,0 +1,108 @@
+<!-- ✅ NAVBAR -->
+<nav
+  class="navbar navbar-expand-lg navbar-dark"
+  style="background-color: #ffca28"
+>
+  <div class="container-fluid">
+    <a class="navbar-brand fw-semibold" href="#">DRDO Inventory</a>
+    <div class="ms-auto">
+      <a class="btn btn-outline-light btn-sm rounded-pill" routerLink="/"
+        >⬅ Back to Homepage</a
+      >
+    </div>
+  </div>
+</nav>
+
+<!-- ✅ WATERMARKS -->
+<div class="watermark-overlay">
+  <img src="assets/drdo-logo.png" alt="DRDO Logo" class="watermark-logo" />
+</div>
+<div class="watermark-left">
+  <img
+    src="assets/drdo-logo.png"
+    alt="Left Watermark"
+    class="watermark-side-logo"
+  />
+</div>
+<div class="watermark-right">
+  <img
+    src="assets/drdo-logo.png"
+    alt="Right Watermark"
+    class="watermark-side-logo"
+  />
+</div>
+
+<!-- ✅ MAIN CONTAINER -->
+<div class="container mt-5 position-relative" style="z-index: 1">
+  <h4 class="text-center fw-bold mb-5 text-dark">
+    📦 Inventory Classification
+  </h4>
+
+  <!-- ✅ HORIZONTAL BOXES -->
+  <div class="d-flex flex-wrap justify-content-center gap-4">
+    <!-- Box 1 -->
+    <div class="card card-border hover-scale">
+      <div class="card-body text-center">
+        <h5 class="text-success fw-semibold mb-3">✅ Consumable Items</h5>
+        <button
+          class="btn btn-outline-success rounded-pill px-4"
+          (click)="showConsumable()"
+        >
+          View
+        </button>
+      </div>
+    </div>
+
+    <!-- Box 2 -->
+    <div class="card card-border hover-scale">
+      <div class="card-body text-center">
+        <h5 class="text-danger fw-semibold mb-3">❌ Non-Consumable Items</h5>
+        <button
+          class="btn btn-outline-danger rounded-pill px-4"
+          (click)="showNonConsumable()"
+        >
+          View
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ FILTERED TABLE -->
+  <div
+    *ngIf="filteredItems.length > 0"
+    class="mt-5 p-4 fade-in bg-white rounded-4 shadow-sm"
+  >
+    <h5 class="text-center mb-3" style="color: #ff8f00">
+      {{ showType }} Items
+    </h5>
+
+    <div class="table-responsive">
+      <table class="table table-bordered text-center align-middle table-hover">
+        <thead style="background-color: #fff3cd">
+          <tr class="text-dark">
+            <th>S.No</th>
+            <th>Item</th>
+            <th>LF No</th>
+            <th>CRV No</th>
+            <th>User</th>
+            <th>Project</th>
+            <th>Location</th>
+            <th>Condemned Qty</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of filteredItems; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ item.itemName }}</td>
+            <td>{{ item.lfNo }}</td>
+            <td>{{ item.crvNo }}</td>
+            <td>{{ item.user.id }}</td>
+            <td>{{ item.project.id }}</td>
+            <td>{{ item.location.id }}</td>
+            <td>{{ item.condemnedQty }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
